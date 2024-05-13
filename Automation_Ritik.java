@@ -16,7 +16,7 @@ public class AddPackageTest {
         driver.get("https://ecs-qa.kloudship.com");
     }
     //TEST CASE 01: ADDS THE PACKAGE
-    @Test1
+    @Test
     public void testAddPackage() {
         // Step 01: Login to the application
         WebElement username = driver.findElement(By.id("username"));
@@ -48,7 +48,7 @@ public class AddPackageTest {
         WebElement logoutLink = driver.findElement(By.linkText("Logout"));
         logoutLink.click();
     }
-    @test2
+    @Test(dependsOnMethods = {"testAddPackage"})
 //TEST CASE 02: DELETE THE PACKAGE
     public void testDeletePackage() {
         // Step 01: Login to the application
