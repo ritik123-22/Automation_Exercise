@@ -15,8 +15,8 @@ public class AddPackageTest {
         driver = new ChromeDriver();
         driver.get("https://ecs-qa.kloudship.com");
     }
-
-    @Test
+    //TEST CASE 01: ADDS THE PACKAGE
+    @Test1
     public void testAddPackage() {
         // Step 01: Login to the application
         WebElement username = driver.findElement(By.id("username"));
@@ -45,6 +45,33 @@ public class AddPackageTest {
         saveButton.click();
 
         // Step 06: Logout the application
+        WebElement logoutLink = driver.findElement(By.linkText("Logout"));
+        logoutLink.click();
+    }
+    @test2
+//TEST CASE 02: DELETE THE PACKAGE
+    public void testDeletePackage() {
+        // Step 01: Login to the application
+        WebElement username = driver.findElement(By.id("username"));
+        WebElement password = driver.findElement(By.id("password"));
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+
+        username.sendKeys("kloudship.qa.automation@mailinator.com");
+        password.sendKeys("Password1");
+        loginButton.click();
+
+        // Step 02: Navigate to Package Types
+        WebElement packageTypesLink = driver.findElement(By.linkText("Package Types"));
+        packageTypesLink.click();
+
+        // Step 03: Delete the newly added package
+        WebElement packageName = driver.findElement(By.xpath("//td[contains(text(), 'FirstName_LastName')]/following-sibling::td[1]/a"));
+        packageName.click();
+
+        WebElement deleteButton = driver.findElement(By.id("delete-button"));
+        deleteButton.click();
+
+        // Step 04: Logout the application
         WebElement logoutLink = driver.findElement(By.linkText("Logout"));
         logoutLink.click();
     }
